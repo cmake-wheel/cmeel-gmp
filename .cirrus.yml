@@ -2,7 +2,7 @@ macos_arm64_task:
   name: Build macOS arm64 wheels.
   only_if: $CIRRUS_TAG =~ 'v.*' && $CIRRUS_REPO_OWNER == 'cmake-wheel'
   environment:
-    TWINE_PASSWORD: ENCRYPTED[TODO]
+    TWINE_PASSWORD: ENCRYPTED[f8f54e92922b7b3353189f59be69aeb007f1fa7715be41d445e19808d397c0d371d4f209f731d98d71863854acc2becb]
   macos_instance:
     image: ghcr.io/cirruslabs/macos-monterey-xcode
   env:
@@ -16,8 +16,9 @@ macos_arm64_task:
     - python -m pip install -U pip
     - python -m pip install twine
   run_wheel_script:
+    - sed -i 's=gmplib.org/download/gmp=homepages.laas.fr/gsaurel=' CMakeLists.txt
     - python -m pip wheel -vw wh .
   publish_script:
-    - python -m twine upload -u __token__ wh/cmeel_openblas*.whl
+    - python -m twine upload -u __token__ wh/cmeel_gmp*.whl
   wheels_artifacts:
     path: "wh/*"

@@ -33,6 +33,8 @@ jobs:
           platforms: all
       - run: python -m pip install -U pip
       - run: python -m pip install cmeel
+      - name: mirror url  # Please use your own mirror...
+        run: sed -i 's=gmplib.org/download/gmp=homepages.laas.fr/gsaurel=' CMakeLists.txt
       - run: python -m cmeel docker -Ui "quay.io/pypa/${{ matrix.image }}_${{ matrix.arch }}"
       - uses: actions/upload-artifact@v3
         with:
@@ -53,6 +55,8 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -U pip
+      - name: mirror url  # Please use your own mirror...
+        run: sed -i 's=gmplib.org/download/gmp=homepages.laas.fr/gsaurel=' CMakeLists.txt
       - run: python -m pip wheel -vw wh .
       - uses: actions/upload-artifact@v3
         with:
