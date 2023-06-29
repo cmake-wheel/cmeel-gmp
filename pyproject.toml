@@ -14,6 +14,7 @@ homepage = "https://github.com/cmake-wheel/cmeel-gmp"
 repository = "https://github.com/cmake-wheel/cmeel-gmp.git"
 
 [tool.cmeel]
+build-number = 1
 py3-none = true
 run-tests = false
 
