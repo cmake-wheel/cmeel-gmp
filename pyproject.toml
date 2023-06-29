@@ -1,0 +1,20 @@
+[build-system]
+build-backend = "cmeel.build"
+requires = ["cmeel[build]"]
+
+[project]
+description = "cmeel distribution for GMP"
+license = "LGPL-3.0-only"
+name = "cmeel-gmp"
+requires-python = ">= 3.8"
+version = "0.3.23"
+
+[project.urls]
+homepage = "https://github.com/cmake-wheel/cmeel-gmp"
+repository = "https://github.com/cmake-wheel/cmeel-gmp.git"
+
+[tool.cmeel]
+py3-none = true
+
+[tool.tomlsort]
+all = true
