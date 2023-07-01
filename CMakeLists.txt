@@ -8,7 +8,7 @@ project(cmeel-${NAME} VERSION ${VERSION})
 include(ExternalProject)
 ExternalProject_Add(
     ${NAME}
-    URL "https://gmplib.org/download/${NAME}/${NAME}-${VERSION}.tar.lz"
+    URL "https://gmplib.org/download/gmp/${NAME}-${VERSION}.tar.lz"
   DOWNLOAD_EXTRACT_TIMESTAMP OFF
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
