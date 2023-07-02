@@ -16,7 +16,7 @@ ExternalProject_Add(
   BUILD_COMMAND "make"
   TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install"
-  COMMAND "cmake" "-E" "rm" "${CMAKE_INSTALL_PREFIX}/lib/lib${NAME}.la")
+  COMMAND "${CMAKE_COMMAND}" "-E" "rm" "${CMAKE_INSTALL_PREFIX}/lib/lib${NAME}.la")
 
 # dummy file for install target
 install(FILES README.md DESTINATION share/cmeel-${NAME}/)
