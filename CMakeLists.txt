@@ -7,16 +7,17 @@ project(cmeel-${NAME} VERSION ${VERSION})
 
 include(ExternalProject)
 ExternalProject_Add(
-    ${NAME}
-    URL "https://gmplib.org/download/gmp/${NAME}-${VERSION}.tar.lz"
-  DOWNLOAD_EXTRACT_TIMESTAMP OFF
+  ${NAME}
+  URL "https://gmplib.org/download/gmp/${NAME}-${VERSION}.tar.lz"
+      DOWNLOAD_EXTRACT_TIMESTAMP OFF
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
   COMMAND sed -i.bak "/SUBDIRS/s/ doc//" Makefile
   BUILD_COMMAND "make"
   TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install"
-  COMMAND "${CMAKE_COMMAND}" "-E" "rm" "${CMAKE_INSTALL_PREFIX}/lib/lib${NAME}.la")
+  COMMAND "${CMAKE_COMMAND}" "-E" "rm"
+          "${CMAKE_INSTALL_PREFIX}/lib/lib${NAME}.la")
 
 # dummy file for install target
 install(FILES README.md DESTINATION share/cmeel-${NAME}/)
