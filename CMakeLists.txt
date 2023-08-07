@@ -5,12 +5,14 @@ set(VERSION 6.2.1)
 
 project(cmeel-${NAME} VERSION ${VERSION})
 
-if(NOT DEFINED CMEEL_JOBS)
-  if(DEFINED ENV{CMEEL_JOBS})
-    set(CMEEL_JOBS $ENV{CMEEL_JOBS})
-  else()
-    set(CMEEL_JOBS 4)
-  endif()
+if(DEFINED ENV{CMEEL_JOBS})
+  set(CMEEL_JOBS
+      $ENV{CMEEL_JOBS}
+      CACHE STRING "number of build jobs" FORCE)
+else()
+  set(CMEEL_JOBS
+      4
+      CACHE STRING "number of build jobs")
 endif()
 
 include(ExternalProject)
