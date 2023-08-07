@@ -5,6 +5,14 @@ set(VERSION 6.2.1)
 
 project(cmeel-${NAME} VERSION ${VERSION})
 
+if(NOT DEFINED CMEEL_JOBS)
+  if(DEFINED ENV{CMEEL_JOBS})
+    set(CMEEL_JOBS $ENV{CMEEL_JOBS})
+  else()
+    set(CMEEL_JOBS 4)
+  endif()
+endif()
+
 include(ExternalProject)
 ExternalProject_Add(
   ${NAME}
@@ -13,7 +21,7 @@ ExternalProject_Add(
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
   COMMAND sed -i.bak "/SUBDIRS/s/ doc//" Makefile
-  BUILD_COMMAND "make"
+  BUILD_COMMAND "make" "-j${CMEEL_JOBS}"
   TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install"
   COMMAND "${CMAKE_COMMAND}" "-E" "rm"
