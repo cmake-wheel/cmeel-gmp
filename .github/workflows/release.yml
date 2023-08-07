@@ -6,6 +6,7 @@ on:
       - "v*"
 
 env:
+  CMEEL_JOBS: 2
   CMEEL_LOG_LEVEL: DEBUG
 
 jobs:
