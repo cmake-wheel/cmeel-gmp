@@ -12,6 +12,7 @@ version = "6.3.0"
 [project.urls]
 homepage = "https://github.com/cmake-wheel/cmeel-gmp"
 repository = "https://github.com/cmake-wheel/cmeel-gmp.git"
+upstream = "https://gmplib.org/"
 
 [tool.cmeel]
 has-sitelib = false
